@@ -4,14 +4,37 @@ const port = 3000;
 
 app.get('/', (req, res) => {
   res.send('Hola, este es mi server en Express');
+});
 
-});app.get('/nueva-ruta', (req, res) => {
+app.get('/nueva-ruta', (req, res) => {
   res.send('Hola, soy una nueva ruta');
+});
 
-});app.get('/products', (req, res) => {
-  res.json({
+app.get('/products', (req, res) => {
+  res.json([{
     name: 'producto 1',
-    price: 1000
+    price: 1000},
+    {
+      name: 'producto 2',
+      price: 2000
+    }
+  ]);
+});
+
+app.get('/products/:id', (req, res) => {
+  const { id } = req.params;
+  res.json({
+    id,
+    name: 'producto 2',
+    price: 2000
+  });
+});
+
+app.get('/categories/:categoryId/products/:productId', (req, res) => {
+  const { categoryId , productId } = req.params;
+  res.json({
+    categoryId,
+    productId,
   });
 });
 
