@@ -1,12 +1,14 @@
 const express = require('express');
+const functions = require("firebase-functions");
 const cors = require('cors');
 const routerApi = require('./routes');
-const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errorHandler');
 const https = require("https");
 
-const app = express();
-const port = 3000;
+const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errorHandler');
 
+const app = express();
+const port = process.env.PORT || 3000;
+/*process.env.PORT ||*/
 app.use(express.json());
 
 //Esto es para el acceso a nuestra API  que le queramos dar a otras apps u otros sitios web. Esto es porque nuestra API no es pública, de lo contrario solo es necesraia la línea 26.
@@ -17,7 +19,7 @@ const whiteList = [
 ];
 const options = {
   origin: (origin, callback) => {
-    if (whiteList.includes() || !origin){
+    if (whiteList.includes(origin) || !origin){
       callback(null, true);
     } else {
       callback(new Error('No tiene permitido el acceso a esta API'));
@@ -26,11 +28,11 @@ const options = {
 }
 app.use(cors(options));
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hola, este es mi server en Express');
 });
 
-app.get('/nueva-ruta', (req, res) => {
+app.get('/api/nueva-ruta', (req, res) => {
   res.send('Hola, soy una nueva ruta');
 });
 
