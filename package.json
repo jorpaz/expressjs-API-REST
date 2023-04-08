@@ -2,10 +2,10 @@
   "name": "my-store",
   "version": "1.0.0",
   "description": "",
-  "main": "functions/index.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon functions/index.js",
-    "start": "node functions/index.js",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "lint": "eslint"
   },
   "keywords": [],
