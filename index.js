@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const routerApi = require('./API/routes');
+const routerApi = require('./routes');
 const https = require("https");
-const { logErrors, errorHandler, boomErrorHandler } = require('./API/middlewares/errorHandler');
+const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errorHandler');
 
 //FIREBASE
 const functions = require("firebase-functions");
