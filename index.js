@@ -1,10 +1,13 @@
 const express = require('express');
-const functions = require("firebase-functions");
 const cors = require('cors');
 const routerApi = require('./API/routes');
 const https = require("https");
-
 const { logErrors, errorHandler, boomErrorHandler } = require('./API/middlewares/errorHandler');
+
+//FIREBASE
+const functions = require("firebase-functions");
+
+
 
 const app = express();
 const port = process.env.PORT || 3000;
