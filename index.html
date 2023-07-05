@@ -13,10 +13,22 @@
 <body>
   <h1>PRUEBA DE EXPRESS</h1>
 
-  <form action="">
+  <form action="/api/new-product" method="post">
     <label for="">
       <span>Nombre</span>
+      <input type="text" autofocus placeholder="Nombre" name="nombre">
     </label>
+
+    <label for="">
+      <span>Precio</span>
+      <input type="number" placeholder="Precio" name="precio">
+    </label>
+
+    <label for="">
+      <span>Imagen</span>
+      <input type="text" placeholder="Link de Imagen" name="imagen">
+    </label>
+    <button>Agregar</button>
   </form>
 </body>
 </html>

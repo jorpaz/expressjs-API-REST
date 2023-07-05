@@ -33,6 +33,10 @@ const options = {
 app.use(cors(options));
 
 app.get('/', (req, res) => {
+  res.send('Hola, este es mi server en Express');
+});
+
+app.get('/api/new-product', (req, res) => {
   //res.send('Hola, este es mi server en Express');
   res.sendFile(path.join(__dirname, 'index.html'));
 });
