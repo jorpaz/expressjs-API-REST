@@ -28,11 +28,6 @@ router.get('/:id',
   }
 });
 
-router.post('/api/new-product', (req, res) =>{
-  console.log(req.body);
-  res.send('RECIBIDOOOOOOO');
-});
-
 router.post('/',
   validatorHandler(createProductSchema, 'body'),
   async (req, res) => {

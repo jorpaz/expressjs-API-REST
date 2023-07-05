@@ -4,6 +4,7 @@ const routerApi = require('./routes');
 const https = require("https");
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errorHandler');
 const path = require('path');
+const router = express.Router();
 
 //FIREBASE
 const functions = require("firebase-functions");
@@ -33,11 +34,11 @@ const options = {
 }
 app.use(cors(options));
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.send('Hola, este es mi server en Express');
-});
+});*/
 
-app.get('/api/new-product', (req, res) => {
+app.get('/', (req, res) => {
   //res.send('Hola, este es mi server en Express');
   res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -55,4 +56,9 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log('Mi port ' + port);
   console.log('SEGUNDA PRUEBA');
+});
+
+router.post('/api/v1/products', (req, res) =>{
+  console.log(req.body);
+  res.send('RECIBIDOOOOOOO');
 });
