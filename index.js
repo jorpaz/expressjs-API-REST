@@ -31,7 +31,7 @@ const options = {
 }
 app.use(cors(options));
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hola, este es mi server en Express');
 });
 
