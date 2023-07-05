@@ -11,7 +11,7 @@ class ProductsService {
   generate(){
     const limit = 100;
 
-    for (let i = 0; i < limit; i++) {
+    for (let i = 0; i <= limit; i++) {
       this.products.push({
         id: faker.datatype.uuid(),
         name: faker.commerce.productName(),
