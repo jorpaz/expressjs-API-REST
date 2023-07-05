@@ -3,6 +3,7 @@ const cors = require('cors');
 const routerApi = require('./routes');
 const https = require("https");
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errorHandler');
+const path = require('path');
 
 //FIREBASE
 const functions = require("firebase-functions");
@@ -32,7 +33,8 @@ const options = {
 app.use(cors(options));
 
 app.get('/', (req, res) => {
-  res.send('Hola, este es mi server en Express');
+  //res.send('Hola, este es mi server en Express');
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/api/nueva-ruta', (req, res) => {
