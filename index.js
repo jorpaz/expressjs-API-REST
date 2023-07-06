@@ -19,8 +19,6 @@ app.use(express.json());
 //Esto es para el acceso a nuestra API  que le queramos dar a otras apps u otros sitios web. Esto es porque nuestra API no es pública, de lo contrario solo es necesraia la línea 26.
 const whiteList = [
   'http://localhost:3000',
-  'https://myapp.com.ejemplo',
-  'https://otraapp.com.ejemplo',
   'https://express-api-q41z.onrender.com'
 ];
 const options = {
