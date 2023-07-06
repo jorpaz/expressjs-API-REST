@@ -20,8 +20,7 @@ app.use(express.json());
 const whiteList = [
   'http://localhost:3000',
   'https://myapp.com.ejemplo',
-  'https://otraapp.com.ejemplo',
-  'https://express-api-q41z.onrender.com'
+  'https://otraapp.com.ejemplo'
 ];
 const options = {
   origin: (origin, callback) => {
