@@ -9,8 +9,8 @@ class ProductsService {
   }
 
   generate(){
-    const limit = 100;
 
+    /*const limit = 100;
     for (let i = 0; i <= limit; i++) {
       this.products.push({
         id: faker.datatype.uuid(),
@@ -19,7 +19,13 @@ class ProductsService {
         image: faker.image.imageUrl(),
         isBlock: faker.datatype.boolean(),
       });
-    }
+    }*/
+
+    this.products.push({
+      name: "primer producto",
+      price: "0",
+      image: "link de prueba",
+    });
   }
 
   async create(data) {
@@ -35,7 +41,7 @@ class ProductsService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(this.products)
-      }, 500);
+      }, 100);
     });
   }
 

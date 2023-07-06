@@ -1,27 +1,27 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors');
 const routerApi = require('./routes');
 const https = require("https");
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errorHandler');
 const path = require('path');
-const router = express.Router();
 
 //FIREBASE
 const functions = require("firebase-functions");
 
 
-
-const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
 //Esto es para el acceso a nuestra API  que le queramos dar a otras apps u otros sitios web. Esto es porque nuestra API no es pública, de lo contrario solo es necesraia la línea 26.
 const whiteList = [
-  'http://localhost:8080',
+  'http://localhost:3000',
   'https://myapp.com.ejemplo',
   'https://otraapp.com.ejemplo',
-  'https://express-api-q41z.onrender.com/api/new-product'
+  'https://express-api-q41z.onrender.com'
 ];
 const options = {
   origin: (origin, callback) => {
@@ -56,9 +56,4 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log('Mi port ' + port);
   console.log('SEGUNDA PRUEBA');
-});
-
-router.post('/api/v1/products', (req, res) =>{
-  console.log(req.body);
-  res.send('RECIBIDOOOOOOO');
 });

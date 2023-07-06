@@ -31,9 +31,9 @@ router.get('/:id',
 router.post('/',
   validatorHandler(createProductSchema, 'body'),
   async (req, res) => {
-  const body = req.body;
-  const newProduct = await service.create(body);
-  res.status(201).json(newProduct);
+    const body = req.body;
+    const newProduct = await service.create(body);
+    res.status(201).json(newProduct);
 });
 
 //Patch o Put
