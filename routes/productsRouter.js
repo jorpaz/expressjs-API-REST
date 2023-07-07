@@ -1,4 +1,5 @@
 const express = require('express');
+//const { initializeApp } = require('firebase-admin/app');
 
 const productsService = require('../services/productService');
 const {validatorHandler} = require('../middlewares/validatorHandler');
@@ -7,9 +8,22 @@ const { createProductSchema, updateProductSchema, getProductSchema} = require('.
 const router = express.Router();
 const service = new productsService;
 
+//FIREBASE
+const admin = require('firebase-admin');
+let serviceAccount = require("../express-api-rest-bbbc9-firebase-adminsdk-19oyl-c8c062f74c.json");
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://express-api-rest-bbbc9-default-rtdb.firebaseio.com/'
+});
+const db = admin.database();
+
 router.get('/', async (req, res) => {
   const products = await service.find();
-  res.json(products);
+
+  db.ref('products').once('value', (snapshot) => {
+    const dataProducts = snapshot.val();
+    res.json({dataProducts});
+  })
 });
 
 router.get('/filter', async (req, res) => {
@@ -34,6 +48,9 @@ router.post('/',
     const body = req.body;
     const newProduct = await service.create(body);
     res.status(201).json(newProduct);
+    db.ref('products').push(newProduct);
+    //res.redirect('/');
+    console.log()
 });
 
 //Patch o Put

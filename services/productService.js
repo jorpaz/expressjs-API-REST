@@ -29,12 +29,20 @@ class ProductsService {
   }
 
   async create(data) {
-    const newProduct = {
+    /*const newProduct = {
       id: faker.datatype.uuid(),
       ...data
     }
     this.products.push(newProduct);
-    return newProduct;
+    return newProduct;*/
+
+    const newProduct = {
+      name: data.name,
+      price: data.price,
+      image: data.image
+    }
+    this.products.push(newProduct);
+    return newProduct
   }
 
   async find(){

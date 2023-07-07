@@ -8,9 +8,6 @@ const https = require("https");
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/errorHandler');
 const path = require('path');
 
-//FIREBASE
-const functions = require("firebase-functions");
-
 
 const port = process.env.PORT || 3000;
 
